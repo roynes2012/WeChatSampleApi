@@ -15,9 +15,14 @@ class WeChatController extends BaseController
     public function __construct()
     {
         $config = array(
+            'debug' => true,
             'app_id' => env('WECHAT_APP_ID', 'wx5cb1eb81f8432e7d'),
             'secret' => env('WECHAT_APP_SECRET', '777f02638e0bda0041a69b8966afa97a'),
-            'token' => env('WECHAT_TOKEN', 'wechat_kungfuenglish')
+            'token' => env('WECHAT_TOKEN', 'wechat_kungfuenglish'),
+            'log' => array(
+                'level' => 'debug',
+                'file'  => base_path().'/storage/logs/wechat/easywechat.log',
+            )
         );
 
         $this->wechat_app = new Application($config);
